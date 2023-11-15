@@ -26,6 +26,26 @@ Route::get('/notas/crear', function () {
     return 'Crear nueva nota';
 });
 
+//Parámetro dinámico / dynamic parameters
+
+Route::get('/notas/{id}/editar', function ($id) {
+    return 'Editar nota: '. $id;
+});
+
+//Esta ruta debe ir la última para no tener precedencia sobre notas/crear
+// Las rutas de parámetros dinámicos deben ir debajo de las de parámetros estáticos
+
+Route::get('/notas/{id}', function ($id) {
+    return "Detalle de la nota: {$id}"; // con comillas dobles se interpretan las variables dentro de la cadena
+})->whereNumber('id'); // para asegurar solo numeros
+// ->where('id', '\d+') // con esta expresion regular solucionaríamos el problema de preferencia de la ruta dinámica al recibir solo números
+
+/* Parámetro de consulta / query parameters
+Route::get('/notas/editar', function () {
+    return 'Editar nota: ? ' . $_GET['id']  ;
+});
+*/ 
+
 // Dificultad Random:
 Route::get('/cursos', function () {
     return [

@@ -27,6 +27,8 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+        
+        Route::pattern('id', '[0-9]+'); // para que solo acepte numeros como id en las rutas
 
         $this->routes(function () {
             Route::middleware('api')
