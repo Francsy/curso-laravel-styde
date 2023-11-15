@@ -19,11 +19,11 @@ Route::get('/', function () {
 
 
 Route::get('/notas', function () {
-    return 'Listado de notas';
+    return view('notes');
 });
 
 Route::get('/notas/crear', function () {
-    return 'Crear nueva nota';
+    return view('add-note');
 });
 
 //Parámetro dinámico / dynamic parameters
