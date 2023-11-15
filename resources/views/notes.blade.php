@@ -1,76 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+        @extends('layouts.app')
+        {{-- @include('layouts.header') --}}
+        @section('title', 'Listado de notas')
+        @section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-    <div class="wrap">
-        <header class="head">
-            <a href="#" class="logo"></a>
-
-            <nav class="main-nav">
-                <ul class="main-nav-list">
-                    <li class="main-nav-item active">
-                        <a href="/static/notes.html" class="main-nav-link">
-                            <i class="icon icon-th-list"></i>
-                            <span>Ver notas</span>
-                        </a>
-                    </li>
-                    <li class="main-nav-item">
-                        <a href="/static/add-note.html" class="main-nav-link">
-                            <i class="icon icon-pen"></i>
-                            <span>Nueva nota</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
         <main class="content">
             <div class="cards">
 
                 @forelse ($notes as $note)
+                    <div class="card card-small">
+                        <div class="card-body">
+                            <h4>{{ $note }}</h4>
 
-                <div class="card card-small">
-                    <div class="card-body">
-                        <h4>{{ $note }}</h4>
+                            <p>
+                                {{ $note }}
+                            </p>
+                        </div>
 
-                        <p>
-                            {{ $note }}
-                        </p>
+                        <footer class="card-footer">
+                            <a class="action-link action-edit">
+                                <i class="icon icon-pen"></i>
+                            </a>
+                            <a class="action-link action-delete">
+                                <i class="icon icon-trash"></i>
+                            </a>
+                        </footer>
                     </div>
-
-                    <footer class="card-footer">
-                        <a class="action-link action-edit">
-                            <i class="icon icon-pen"></i>
-                        </a>
-                        <a class="action-link action-delete">
-                            <i class="icon icon-trash"></i>
-                        </a>
-                    </footer>
-                </div>
                 @empty
 
-                <p>En este momento no tenemos notas</p>
-
+                    <p>En este momento no tenemos notas</p>
                 @endforelse
 
                 <div class="card card-small">
                     <div class="card-body">
                         <h4>Cómo usar foreach en Blade:</h4>
-                        {{--Comentario de Blade--}}
-                        
+                        {{-- Comentario de Blade --}}
+
                         @verbatim
-                        <p>
-                            Podemos usar foreach con la directiva @@foreach
-                        </p>
-                        <br/>
-                        <p>Podemos imprimir la sintaxis de blade añadiendo una @  delante.</p>
-                        @{{ notas }}
+                            <p>
+                                Podemos usar foreach con la directiva @@foreach
+                            </p>
+                            <br />
+                            <p>Podemos imprimir la sintaxis de blade añadiendo una @ delante.</p>
+                            @{{ notas }}
                         @endverbatim
                     </div>
 
@@ -96,7 +67,8 @@
 
                         <pre>composer create-project laravel/laravel curso-laravel-styde "6.*"</pre>
 
-                        <p>La segunda es con el instalador de Laravel, la cual instalará la versión actual del framework:</p>
+                        <p>La segunda es con el instalador de Laravel, la cual instalará la versión actual del
+                            framework:</p>
 
                         <pre>laravel new curso-laravel-styde</pre>
                     </div>
@@ -115,7 +87,8 @@
                         <h4>Rutas y JSON</h4>
 
                         <p>
-                            Recuerda que si retornas un arreglo en una ruta, Laravel lo va a convertir en JSON automáticamente:
+                            Recuerda que si retornas un arreglo en una ruta, Laravel lo va a convertir en JSON
+                            automáticamente:
                         </p>
 
                         <pre>
@@ -188,18 +161,6 @@
                 </div>
             </div>
         </main>
-        <footer class="foot">
-            <div class="ad">
-                <p>
-                    Esta aplicación es desarrollada en el curso
-                    <a href="https://styde.net/laravel-6">Primeros pasos con Laravel 6</a>.
-                </p>
-            </div>
-            <div class="license">
-                <p>© 2019 Derechos Reservados - Styde Limited</p>
-            </div>
-        </footer>
-    </div>
-</body>
+    @endsection
 
-</html>
+    {{-- @include('layouts.footer') --}}
