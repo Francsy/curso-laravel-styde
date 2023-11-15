@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <div class="wrap">
         <header class="head">
@@ -30,13 +32,15 @@
         </header>
         <main class="content">
             <div class="cards">
+
+                @forelse ($notes as $note)
+
                 <div class="card card-small">
                     <div class="card-body">
-                        <h4>¿Para qué sirve Composer?</h4>
+                        <h4>{{ $note }}</h4>
 
                         <p>
-                            Con Composer podemos instalar y actualizar frameworks como Laravel o Symfony,
-                            así como componentes para generar PDF, procesar pagos con tarjetas, manipular imágenes y mucho más.
+                            {{ $note }}
                         </p>
                     </div>
 
@@ -49,6 +53,38 @@
                         </a>
                     </footer>
                 </div>
+                @empty
+
+                <p>En este momento no tenemos notas</p>
+
+                @endforelse
+
+                <div class="card card-small">
+                    <div class="card-body">
+                        <h4>Cómo usar foreach en Blade:</h4>
+                        {{--Comentario de Blade--}}
+                        
+                        @verbatim
+                        <p>
+                            Podemos usar foreach con la directiva @@foreach
+                        </p>
+                        <br/>
+                        <p>Podemos imprimir la sintaxis de blade añadiendo una @  delante.</p>
+                        @{{ notas }}
+                        @endverbatim
+                    </div>
+
+                    <footer class="card-footer">
+                        <a class="action-link action-edit">
+                            <i class="icon icon-pen"></i>
+                        </a>
+                        <a class="action-link action-delete">
+                            <i class="icon icon-trash"></i>
+                        </a>
+                    </footer>
+                </div>
+
+
                 <div class="card">
                     <div class="card-body">
                         <h4>Instalación de Laravel</h4>
@@ -165,4 +201,5 @@
         </footer>
     </div>
 </body>
+
 </html>

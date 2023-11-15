@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
+ */
 
-
-Route::get('/notas', function () {
-    return view('notes');
+Route::get('/', function () {
+    $notes = [
+        'Primera nota',
+        'Segunda nota',
+        'Tercera nota',
+        'Cuarta nota',
+        'Quinta nota',
+    ];
+    // return view('notes')->with('notes',$notes);
+    return view('notes', ['notes' => $notes]);
 });
 
 Route::get('/notas/crear', function () {
